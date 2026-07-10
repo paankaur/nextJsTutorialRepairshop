@@ -3,5 +3,5 @@ export const metadata = {
   description: "Manage your tickets here.",
 };
 export default function Tickets() {
-  return <h2 className="">Tickets Page</h2>;
+  return <h2 className="text-2xl font-bold mb-4">Tickets Page</h2>;
 }
