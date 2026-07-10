@@ -5,7 +5,7 @@ import { z } from 'zod';
 export const insertTicketSchema = createInsertSchema(tickets, {
     id: z.union([z.number(), z.literal("(New)")]),
     title: (schema) => schema.min(1, "Title is required"),
-    description: (schema) => schema.optional(), // schema currently allows null
+    description: (schema) => schema.min(1, "Description is required"),
     tech: z.email("Invalid email address"),
 });
 
