@@ -14,6 +14,9 @@ importers:
       '@kinde-oss/kinde-auth-nextjs':
         specifier: ^2.13.0
         version: 2.13.0(next@16.2.9(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@kinde/management-api-js':
+        specifier: ^0.18.0
+        version: 0.18.0
       '@neondatabase/neon-js':
         specifier: 0.6.2-beta
         version: 0.6.2-beta(a90bd6805bd9ac3e360c6e58e6a1a36e)
@@ -1127,6 +1130,9 @@ packages:
 
   '@kinde/jwt-validator@0.4.3':
     resolution: {integrity: sha512-bszufsi1e1TzMUYJb4AKj3B4iod5z3oHioTgdo0Qm9TApGwmSTnG72nVeq4tF5Qp8pfGRea2O/cRuoburqMyiw==}
+
+  '@kinde/management-api-js@0.18.0':
+    resolution: {integrity: sha512-c5SlyLYH4HVNV6YC6Q+meAcRpMFTkiM8DykB0FYihqjAAPOCTpn31nNWBCCvaVMCyq/Ry51U5QIfTSs0reFCIQ==}
 
   '@levischuck/tiny-cbor@0.2.11':
     resolution: {integrity: sha512-llBRm4dT4Z89aRsm6u2oEZ8tfwL/2l6BwpZ7JcyieouniDECM5AqNgr/y08zalEIvW3RSK4upYyybDcmjXqAow==}
@@ -3100,6 +3106,10 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
+
+  aws-jwt-verify@5.2.1:
+    resolution: {integrity: sha512-J+buA4M+qvQDk58WXFBLkDodkEX3DDL1ac5XFQPW3opxAsaLXYu5hYnlSHsaBRDBUXBAn695kE/cw/mdyJKwJg==}
+    engines: {node: '>=18.0.0'}
 
   axe-core@4.12.1:
     resolution: {integrity: sha512-s7iGf5GaVMxEG0ENN9x+xTr7GFZCb1ZP/1uATUpCEK2X78nDB3RwbtFCo9pGAf9ru+VwoQ464DkaLEeRM08wJA==}
@@ -6644,6 +6654,12 @@ snapshots:
       '@kinde/jwt-decoder': 0.2.3
       jsrsasign: 11.1.3
 
+  '@kinde/management-api-js@0.18.0':
+    dependencies:
+      '@kinde/jwt-decoder': 0.2.3
+      aws-jwt-verify: 5.2.1
+      dotenv: 17.4.2
+
   '@levischuck/tiny-cbor@0.2.11': {}
 
   '@marsidev/react-turnstile@1.5.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
@@ -8769,6 +8785,8 @@ snapshots:
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.1.0
+
+  aws-jwt-verify@5.2.1: {}
 
   axe-core@4.12.1: {}
 
