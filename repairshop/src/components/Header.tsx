@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { NavButton } from "@/components/NavButton";
 import { ModeToggle } from "@/components/ModeToggle";
 
+import { NavButtonMenu } from "@/components/NavButtonMenu";
+
 export function Header() {
   return (
     <header className="border-b animate-slide bg-background h-12 p-2 sticky top-0 z-20">
@@ -23,7 +25,14 @@ export function Header() {
         </div>
         <div className="flex items-center">
           <NavButton icon={File} label="Tickets" href="/tickets" />
-          <NavButton icon={UsersRound} label="Customers" href="/customers" />
+          <NavButtonMenu
+            icon={UsersRound}
+            label="Customers Menu"
+            choices={[
+              { title: "Search customers", href: "/customers" },
+              { title: "New customer", href: "/customers/form" },
+            ]}
+          />
           <ModeToggle />
           <Button
             asChild

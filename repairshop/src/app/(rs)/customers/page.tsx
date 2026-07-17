@@ -1,10 +1,27 @@
+import CustomerSearch from "@/app/(rs)/customers/CustomerSearch";
+import { getCustomerSearchResults } from "@/lib/queries/getCustomerSearchResults";
+
 export const metadata = {
-  title: "Customers",
+  title: "Customer Search",
   description: "Manage your customers here.",
 };
 
-export default function Customers() {
+export default async function Customers({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
+  const { searchText } = await searchParams;
+
+  if (!searchText) return <CustomerSearch />;
+
+  // query the database
+  const results = await getCustomerSearchResults(searchText);
+  // return results
   return (
-    <h2 className="text-2xl font-bold mb-4">Customers Page</h2>
-  );
+    <>
+      <CustomerSearch />
+      <p>{JSON.stringify(results)}</p>
+    </>
+  )
 }
