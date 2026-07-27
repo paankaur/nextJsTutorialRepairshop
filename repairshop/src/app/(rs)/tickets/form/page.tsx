@@ -8,15 +8,20 @@ import { Users, init as kindeInit } from "@kinde/management-api-js";
 
 export async function generateMetadata({
   searchParams,
-}: {searchParams: Promise<{ [key: string]: string | undefined }>}) {
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
   const { customerId, ticketId } = await searchParams;
-  if (!ticketId && !customerId) return { title: "Missing customer ID or ticket ID" };
-  if (customerId) return {
-    title: `New Ticket for Customer # ${customerId}`,
-  }
-  if (ticketId) return {
-    title: `Edit Ticket # ${ticketId}`,
-  }
+  if (!ticketId && !customerId)
+    return { title: "Missing customer ID or ticket ID" };
+  if (customerId)
+    return {
+      title: `New Ticket for Customer # ${customerId}`,
+    };
+  if (ticketId)
+    return {
+      title: `Edit Ticket # ${ticketId}`,
+    };
 }
 
 export default async function TicketFormPage({
@@ -93,7 +98,7 @@ export default async function TicketFormPage({
       }
       const customer = await getCustomer(ticket.customerId);
       //return ticket form
-if (isManager) {
+      if (isManager) {
         kindeInit(); // initialize the Kinde Management API client
         const { users } = await Users.getUsers();
         const techs = users
@@ -101,12 +106,18 @@ if (isManager) {
           : [];
         return <TicketForm customer={customer} techs={techs} ticket={ticket} />;
       } else {
-        const isEditable = user?.email?.toLocaleLowerCase() === ticket.tech.toLocaleLowerCase();
-        console.log('user.email: ', user?.email);
-        console.log('tech: ', ticket.tech);
-        return <TicketForm customer={customer} ticket={ticket} isEditable={isEditable} />;
+        const isEditable =
+          user?.email?.toLocaleLowerCase() === ticket.tech.toLocaleLowerCase();
+        console.log("user.email: ", user?.email);
+        console.log("tech: ", ticket.tech);
+        return (
+          <TicketForm
+            customer={customer}
+            ticket={ticket}
+            isEditable={isEditable}
+          />
+        );
       }
-
     }
   } catch (e) {
     if (e instanceof Error) {
